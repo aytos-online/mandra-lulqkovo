@@ -1,0 +1,47 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink font-sans;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif;
+}
+
+a {
+  @apply text-maroon hover:text-maroon-dark transition-colors;
+}
+
+button, [role="button"] {
+  @apply transition-all duration-200;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center bg-maroon text-cream px-6 py-3 rounded-full font-semibold hover:bg-maroon-dark transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center border-2 border-ink/15 bg-paper text-ink px-6 py-3 rounded-full font-semibold hover:border-maroon hover:text-maroon transition-all duration-200;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold tracking-widest uppercase text-ink-muted;
+}
+
+.section-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #FBF3E7 0%, #F4E4C9 100%);
+}
+
+.photo-credit {
+  @apply absolute bottom-3 left-3 bg-black/60 text-cream text-xs px-2 py-1 rounded;
+}
