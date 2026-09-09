@@ -1,0 +1,88 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink font-sans;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif;
+}
+
+a {
+  @apply text-maroon hover:text-maroon-dark transition-colors;
+}
+
+button, [role="button"] {
+  @apply transition-all duration-200;
+}
+
+/* Buttons carry a hard offset shadow rather than a blur — closer to a stamped
+   or printed mark than to a glossy web button. */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-maroon text-cream px-7 py-3.5 rounded-full font-bold
+         shadow-[0_4px_0_0_#7A1613] hover:bg-maroon-dark hover:-translate-y-0.5
+         hover:shadow-[0_6px_0_0_#7A1613] active:translate-y-0.5
+         active:shadow-[0_2px_0_0_#7A1613] transition-all duration-150;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 bg-paper text-ink px-7 py-3.5 rounded-full font-bold
+         border-2 border-ink/15 shadow-[0_4px_0_0_rgba(43,26,18,0.12)] hover:border-maroon hover:text-maroon
+         hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_2px_0_0_rgba(43,26,18,0.12)]
+         transition-all duration-150;
+}
+
+.btn-cream {
+  @apply inline-flex items-center justify-center gap-2 bg-cream text-maroon px-7 py-3.5 rounded-full font-bold
+         shadow-[0_4px_0_0_rgba(0,0,0,0.25)] hover:bg-paper hover:-translate-y-0.5 active:translate-y-0.5
+         active:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] transition-all duration-150;
+}
+
+.eyebrow {
+  @apply text-xs font-bold tracking-[0.18em] uppercase text-maroon;
+}
+
+.section-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24;
+}
+
+.photo-frame {
+  @apply relative overflow-hidden rounded-3xl border-4 border-paper shadow-[0_18px_40px_-18px_rgba(43,26,18,0.55)];
+}
+
+/* Hand-drawn-looking rule under a word in a heading, in the folk gold. */
+.underline-squiggle {
+  position: relative;
+  display: inline-block;
+}
+.underline-squiggle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 0.34em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M0 8 Q 12.5 0 25 8 T 50 8 T 75 8 T 100 8' fill='none' stroke='%23EFA92B' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 46px 0.34em;
+}
+
+/* Woven-linen ground: the warm wheat fill plus the faint weave of the cloth. */
+.texture-linen {
+  background-color: #F7E7C8;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(43, 26, 18, 0.05) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(0deg, rgba(43, 26, 18, 0.05) 0 1px, transparent 1px 6px);
+}
+
+.divider-wave {
+  display: block;
+  width: 100%;
+  height: 28px;
+}
