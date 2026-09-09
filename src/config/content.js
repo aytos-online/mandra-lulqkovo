@@ -1,13 +1,18 @@
-import { placeholderImages } from './placeholderImages';
 import processImg1 from '../assets/images/mandra/process-01.jpg';
 import processImg2 from '../assets/images/mandra/process-04.jpg';
+import mountainImage from '../assets/hero-page.jpg';
+import whiteCheeseImage from '../assets/products/product_white_cheese.png';
+import cheeseWheelImage from '../assets/products/product_cheese_wheel.png';
+import yogurtJarImage from '../assets/products/product_yogurt_jar.png';
+import milkBottleImage from '../assets/products/product_milk_bottle.png';
 
 export const content = {
   hero: {
     badge: 'село Люляково · Стара планина',
-    headline: 'Истински млечни продукти, направени с ръце',
+    headline: 'Истински млечни продукти,',
+    headlineAccent: 'направени с ръце',
     subheading:
-      'Семейна мандра от 1994 г. Краве, овче, козе и биволско мляко, събирано от почти цяла България.',
+      'Семейна мандра от 1994 г. Краве, овче, козе и биволско мляко, събирано от почти цяла България — и нищо повече от мляко, сол и мая.',
     ctaPrimary: { label: 'Към продуктите', to: '/products' },
     ctaSecondary: { label: 'За мандрата', to: '/about' },
     stats: [
@@ -15,8 +20,9 @@ export const content = {
       { value: '4', label: 'вида мляко' },
       { value: '30+', label: 'години занаят' },
     ],
-    image: placeholderImages.hero,
-    statCallout: { value: '30', label: 'години занаят', sub: 'едно семейство' },
+    photo: { src: processImg1, alt: 'Ръчна обработка на прясно сирене в мандрата' },
+    inset: { src: mountainImage, alt: 'Стара планина над село Люляково' },
+    seal: { top: 'от', value: '1994', bottom: 'семейна мандра' },
   },
 
   about: {
@@ -40,10 +46,49 @@ export const content = {
     ],
   },
 
+  // Four steps from milk to table — the part of the craft customers never see.
+  process: {
+    eyebrow: 'Как го правим',
+    heading: 'От млякото до трапезата',
+    intro:
+      'Четири стъпки, които не сме променили от 1994 г. насам — само инструментите около тях станаха по-добри.',
+    cta: { label: 'Вижте какво правим от него', to: '/products' },
+    steps: [
+      {
+        title: 'Събираме млякото',
+        body: 'Обикаляме почти цяла България и подбираме сурово мляко от стопани, които познаваме по име.',
+        accent: 'sky',
+      },
+      {
+        title: 'Подсирваме',
+        body: 'Мляко, сол и мая — нищо друго. Изчакваме подсирката да стегне толкова, колкото трябва.',
+        accent: 'sun',
+      },
+      {
+        title: 'Оформяме на ръка',
+        body: 'Всяко парче се реже, отцежда и подрежда на ръка. Оттук нататък решава усетът, не машината.',
+        accent: 'meadow',
+      },
+      {
+        title: 'Оставяме да зрее',
+        body: 'Сиренето узрява в саламура, кашкавалът — бавно на рафта. Готово е, когато е готово.',
+        accent: 'coral',
+      },
+    ],
+  },
+
+  farmBanner: {
+    eyebrow: 'Направо от планината',
+    heading: 'Мандра в сърцето на Стара планина',
+    text: 'Люляково е малко село в подножието на планината. Животните пасат по същите поляни от поколения — и точно това усещане за място искаме да разпознаете във всеки продукт.',
+    cta: { label: 'Разгледайте нашата история', to: '/about' },
+    image: mountainImage,
+  },
+
   differentiators: [
     {
       title: 'Мляко с традиции',
-      description: 'Мандрата отваря през 1994 г. в с. Люляково и остава в едни и същи ръце.',
+      description: 'Мандрата отваря през 1994 г. в с. Люляково и оттогава остава в едни и същи ръце.',
     },
     {
       title: 'Подбрано сурово мляко',
@@ -51,143 +96,213 @@ export const content = {
     },
     {
       title: 'Четири вида мляко',
-      description: 'Краве, овче, козе и биволско — всяко със своите продукти и сезон.',
+      description: 'Краве, овче, козе и биволско — всяко със своите продукти и свой сезон.',
     },
   ],
 
-  // Placeholder catalog — real product names, weights and photos to be supplied
-  // by the owner before launch.
   productCategories: [
-    { id: 'krave', label: 'Краве', icon: 'К' },
-    { id: 'ovche', label: 'Овче', icon: 'О' },
-    { id: 'koze', label: 'Козе', icon: 'К' },
-    { id: 'bivolsko', label: 'Биволско', icon: 'Б' },
+    {
+      id: 'krave',
+      label: 'Краве',
+      blurb: 'Мекота и наситеност — млякото, което помним от детство.',
+      accent: 'sky',
+    },
+    {
+      id: 'ovche',
+      label: 'Овче',
+      blurb: 'По-плътно и ароматно, с характер на планината.',
+      accent: 'meadow',
+    },
+    {
+      id: 'koze',
+      label: 'Козе',
+      blurb: 'Леко и освежаващо, с деликатна киселинност.',
+      accent: 'sun',
+    },
+    {
+      id: 'bivolsko',
+      label: 'Биволско',
+      blurb: 'Кремообразно и богато — рядко срещано, но си заслужава.',
+      accent: 'coral',
+    },
   ],
 
   products: [
     {
+      id: 'krave-sirene',
       category: 'krave',
       name: 'Бяло саламурено сирене',
       description: 'Краве мляко, сол, мая. Зряло в саламура.',
-      weight: 'прибл. 400 г / 800 г',
-      image: placeholderImages.cheeseBoard1,
+      weight: 'прибл. 400 г · налично и в кутии по 1, 4 и 8 кг',
+      serve: 'Класиката за шопска салата, баница и печени чушки с яйце.',
+      image: whiteCheeseImage,
     },
     {
+      id: 'krave-kashkaval',
       category: 'krave',
       name: 'Кашкавал',
-      description: 'Краве мляко, сол, мая. Зрее на дъска.',
+      description: 'Краве мляко, сол, мая. Зрее бавно за плътен вкус.',
       weight: 'прибл. 350 г парче',
-      image: placeholderImages.cheeseBoard2,
+      serve: 'Тънко нарязан на дъска или разтопен върху топла филия.',
+      image: cheeseWheelImage,
     },
     {
+      id: 'krave-maslo',
       category: 'krave',
-      name: 'Кисело мляко',
-      description: 'Краве мляко, закваска.',
-      weight: '400 г гювече',
-      image: placeholderImages.yogurt,
+      name: 'Краве масло',
+      description: 'Изворено от краве сметана, без добавки.',
+      weight: 'прибл. 200 г',
+      serve: 'На пресен хляб с мед — или в тигана за най-обикновените яйца.',
+      image: milkBottleImage,
     },
     {
+      id: 'surovatachna-izvara',
       category: 'krave',
-      name: 'Извара',
-      description: 'Суроватка от краве мляко.',
+      name: 'Суроватъчна извара',
+      description: 'Извара от суроватка — лека, нискомаслена, за всекидневна употреба.',
       weight: 'прибл. 300 г',
-      image: placeholderImages.creamyBowl,
+      serve: 'За баница, палачинки или просто с лъжица мед.',
+      image: yogurtJarImage,
     },
     {
+      id: 'kashkavaleno-role',
       category: 'krave',
-      name: 'Прясно мляко',
-      description: 'Пълномаслено краве мляко.',
-      weight: '1 л',
-      image: placeholderImages.freshMilk,
+      name: 'Кашкавалено роле',
+      description: 'Руло от узрял кашкавал, ръчно оформено.',
+      weight: 'прибл. 400 г',
+      serve: 'На колелца за мезе — стои добре и на празнична маса.',
+      image: cheeseWheelImage,
     },
     {
+      id: 'gyubek-kashkaval',
+      category: 'krave',
+      name: 'Ръчен кашкавал „Гюбек“',
+      description: 'Ръчно изработен кашкавал от краве и овче мляко, по стара семейна рецепта.',
+      weight: 'прибл. 350 г парче',
+      serve: 'Заслужава си да се опита самостоятелно, преди да влезе в готвене.',
+      image: cheeseWheelImage,
+    },
+    {
+      id: 'ovche-sirene',
       category: 'ovche',
       name: 'Бяло саламурено сирене',
       description: 'Овче мляко, сол, мая. Зряло в саламура.',
-      weight: 'прибл. 400 г',
-      image: placeholderImages.cheeseFruitBoard,
+      weight: 'прибл. 400 г · налично и в кутии по 1, 4 и 8 кг',
+      serve: 'По-плътно от кравето — за салати и за печене на фурна.',
+      image: whiteCheeseImage,
     },
     {
+      id: 'ovche-kashkaval',
       category: 'ovche',
       name: 'Кашкавал',
-      description: 'Овче мляко, сол, мая.',
+      description: 'Овче мляко, сол, мая. Плътен и ароматен.',
       weight: 'прибл. 350 г парче',
-      image: placeholderImages.cheeseBoard1,
+      serve: 'За дъска със сирена или настърган върху топло ястие.',
+      image: cheeseWheelImage,
     },
     {
+      id: 'ovche-kiselo-mlyako',
       category: 'ovche',
-      name: 'Извара',
-      description: 'Суроватка от овче мляко.',
-      weight: 'прибл. 300 г',
-      image: placeholderImages.creamyBowl,
+      name: 'Кисело мляко',
+      description: 'Гъсто овче кисело мляко, традиционна закваска.',
+      weight: '400 г гювече',
+      serve: 'За таратор, за закуска — или с шепа орехи и мед.',
+      image: yogurtJarImage,
     },
     {
+      id: 'koze-sirene',
       category: 'koze',
       name: 'Бяло саламурено сирене',
       description: 'Козе мляко, сол, мая. Зряло в саламура.',
-      weight: 'прибл. 400 г',
-      image: placeholderImages.cheeseBoard2,
+      weight: 'прибл. 400 г · налично и в кутии по 1, 4 и 8 кг',
+      serve: 'Леко и свежо — добре е със зеленчуци и зехтин.',
+      image: whiteCheeseImage,
     },
     {
+      id: 'koze-kashkaval',
       category: 'koze',
-      name: 'Кисело мляко',
-      description: 'Козе мляко, закваска.',
-      weight: '400 г гювече',
-      image: placeholderImages.yogurt,
+      name: 'Кашкавал',
+      description: 'Козе мляко, сол, мая.',
+      weight: 'прибл. 350 г парче',
+      serve: 'По-деликатен вкус — хубав е нарязан на тънко.',
+      image: cheeseWheelImage,
     },
     {
-      category: 'koze',
-      name: 'Прясно мляко',
-      description: 'Пълномаслено козе мляко.',
-      weight: '1 л',
-      image: placeholderImages.freshMilk,
+      id: 'bivolsko-sirene',
+      category: 'bivolsko',
+      name: 'Бяло саламурено сирене',
+      description: 'Биволско мляко, сол, мая. Зряло в саламура.',
+      weight: 'прибл. 400 г · налично и в кутии по 1, 4 и 8 кг',
+      serve: 'Кремообразно и плътно — заслужава си самостоятелно, с хляб.',
+      image: whiteCheeseImage,
     },
     {
+      id: 'bivolsko-kashkaval',
       category: 'bivolsko',
       name: 'Кашкавал',
       description: 'Биволско мляко, сол, мая.',
       weight: 'прибл. 350 г парче',
-      image: placeholderImages.cheeseFruitBoard,
+      serve: 'Богат вкус — малко стига за много.',
+      image: cheeseWheelImage,
     },
     {
+      id: 'bivolsko-kiselo-mlyako',
       category: 'bivolsko',
-      name: 'Масло',
-      description: 'Биволска сметана.',
-      weight: 'прибл. 200 г',
-      image: placeholderImages.butter,
+      name: 'Кисело мляко',
+      description: 'Кремообразно биволско кисело мляко.',
+      weight: '400 г гювече',
+      serve: 'Гъсто дотолкова, че лъжицата да стои — за закуска или десерт.',
+      image: yogurtJarImage,
     },
   ],
 
   stores: {
-    intro:
-      'Работим с партньори, чрез които продуктите ни стигат до магазини и пазари в няколко области. [Заместващ текст — пратете точния списък.]',
-    featuredImage: placeholderImages.marketStall,
+    intro: 'Продуктите ни може да намерите в магазина при мандрата, както и на следните места:',
+    note: 'Не продаваме онлайн. За по-големи количества или доставка до магазин се обадете — ще се разберем.',
     list: [
       {
         name: 'Магазин при мандрата',
-        city: 'с. Люляково',
+        city: 'с. Люляково, ул. Стара планина 6',
         schedule: 'целогодишно',
+        primary: true,
       },
       {
-        name: 'Фермерски пазар',
-        city: 'гр. Бургас',
-        schedule: 'всяка събота',
+        name: 'Зеленчуков пазар',
+        city: 'гр. Айтос',
+        schedule: '',
       },
       {
-        name: 'Магазин „Централен“',
-        city: 'гр. Карнобат',
-        schedule: 'ул. [адрес]',
-      },
-      {
-        name: 'Кооперация „Селска“',
-        city: 'гр. Сливен',
-        schedule: 'ул. [адрес]',
+        name: 'Магазин',
+        city: 'кв. Ветрен, гр. Бургас',
+        schedule: '[уточнете точен адрес]',
       },
     ],
   },
 
   contact: {
     intro: 'Пишете ни или се обадете — с удоволствие ще отговорим на въпросите ви.',
+    faq: [
+      {
+        q: 'Продавате ли онлайн?',
+        a: 'Не. Сайтът е информационен — продуктите се купуват на място в магазина при мандрата или от търговците, при които доставяме.',
+      },
+      {
+        q: 'Може ли по-голямо количество?',
+        a: 'Да. Бялото саламурено сирене е налично и в кутии по 1, 4 и 8 кг. Обадете се, за да уточним количество и срок.',
+      },
+      {
+        q: 'Всички продукти ли са налични винаги?',
+        a: 'Не. Овчето и козето мляко са сезонни, а някои продукти зреят с месеци. Обадете се и ще ви кажем какво има в момента.',
+      },
+    ],
+  },
+
+  // Closing invitation shared by every page.
+  ctaBand: {
+    heading: 'Заповядайте при нас',
+    text: 'Магазинът при мандрата е отворен целогодишно. Ако сте по-далеч — вижте къде другаде ни продават.',
+    primary: { label: 'Къде ни продават', to: '/stores' },
+    secondary: { label: 'Свържете се с нас', to: '/contact' },
   },
 
   footer: {

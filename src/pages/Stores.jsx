@@ -1,33 +1,41 @@
 import { Link } from 'react-router-dom';
 import { content } from '../config/content';
+import { siteConfig } from '../config/site.config';
+import PageHeader from '../components/layout/PageHeader';
 import StoreCard from '../components/sections/StoreCard';
-import PhotoCredit from '../components/ui/PhotoCredit';
+import CtaBand from '../components/sections/CtaBand';
+import Reveal from '../components/ui/Reveal';
 
 export default function Stores() {
   const { stores } = content;
 
   return (
-    <section className="section-container">
-      <h1 className="font-serif font-bold text-4xl md:text-5xl text-ink mb-10">Къде ни продават</h1>
+    <>
+      <PageHeader eyebrow="Магазини" title="Къде ни продават" lead={stores.intro} />
 
-      <div className="bg-cream-deep/50 rounded-3xl p-6 md:p-10 grid md:grid-cols-2 gap-8 items-center mb-12">
-        <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-          <img src={stores.featuredImage.url} alt="Магазин с местни продукти" className="w-full h-full object-cover" />
-          <PhotoCredit credit={stores.featuredImage.credit} />
+      <section className="section-container">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {stores.list.map((store, i) => (
+            <Reveal key={store.name + store.city} delay={i * 100} className="h-full">
+              <StoreCard store={store} />
+            </Reveal>
+          ))}
         </div>
-        <div>
-          <p className="text-ink-muted leading-relaxed mb-4">{stores.intro}</p>
-          <Link to="/contact" className="font-semibold text-maroon hover:text-maroon-dark">
-            Свържете се с нас
-          </Link>
-        </div>
-      </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stores.list.map((store) => (
-          <StoreCard key={store.name + store.city} store={store} />
-        ))}
-      </div>
-    </section>
+        <div className="mt-12 bg-cream-deep/70 border-2 border-maroon/15 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
+          <p className="text-ink-muted leading-relaxed max-w-xl">{stores.note}</p>
+          <div className="flex flex-wrap gap-3 flex-shrink-0">
+            <a href={`tel:${siteConfig.business.phone}`} className="btn-primary no-underline">
+              Обадете се
+            </a>
+            <Link to="/products" className="btn-secondary no-underline">
+              Вижте продуктите
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
   );
 }

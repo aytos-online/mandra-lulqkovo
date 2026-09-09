@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
 import Hero from '../components/sections/Hero';
-import ProductCatalog from '../components/sections/ProductCatalog';
-import AboutTeaser from '../components/sections/AboutTeaser';
+import AnimalCategories from '../components/sections/AnimalCategories';
+import Process from '../components/sections/Process';
 import Differentiators from '../components/sections/Differentiators';
+import FarmBanner from '../components/sections/FarmBanner';
+import CtaBand from '../components/sections/CtaBand';
+import Reveal from '../components/ui/Reveal';
+import { FolkStar } from '../components/ui/FolkPattern';
 
 export default function Home() {
   return (
@@ -9,15 +14,31 @@ export default function Home() {
       <Hero />
 
       <section className="section-container">
-        <p className="eyebrow mb-3">Продукти</p>
-        <h2 className="font-serif font-bold text-3xl md:text-4xl text-ink mb-10 max-w-md">
-          Какво ще намерите при нас
-        </h2>
-        <ProductCatalog limit={4} showViewAllLink />
+        <Reveal className="max-w-xl">
+          <p className="eyebrow mb-3">Продукти</p>
+          <h2 className="font-serif font-bold text-3xl md:text-4xl text-ink mb-4">
+            Разгледайте по <span className="underline-squiggle">вид мляко</span>
+          </h2>
+          <p className="text-ink-muted mb-10 leading-relaxed">
+            Четири вида мляко, всяко със свой характер и продукти. Изберете животно, за да видите какво правим
+            от неговото мляко.
+          </p>
+        </Reveal>
+
+        <AnimalCategories linkMode />
+
+        <Reveal delay={150} className="mt-10 flex items-center gap-3">
+          <FolkStar className="w-4 h-4" />
+          <Link to="/products" className="font-bold text-maroon hover:text-maroon-dark">
+            Разгледайте всички продукти →
+          </Link>
+        </Reveal>
       </section>
 
-      <AboutTeaser />
+      <FarmBanner />
+      <Process />
       <Differentiators />
+      <CtaBand />
     </>
   );
 }

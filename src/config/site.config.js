@@ -1,3 +1,5 @@
+const address = "с. Люляково, ул. Стара планина 6";
+
 export const siteConfig = {
   business: {
     name: "Мандра Люляково",
@@ -6,8 +8,9 @@ export const siteConfig = {
     village: "с. Люляково",
     region: "Стара планина",
     phone: "+359 00 000 000",
-    email: "mandra@example.bg",
-    address: "с. Люляково",
+    email: "adi_milk@abv.bg",
+    address,
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
   },
   nav: [
     { label: "Начало", to: "/" },

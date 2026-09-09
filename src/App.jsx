@@ -5,9 +5,11 @@ import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Stores from './pages/Stores';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 import './styles/theme.css';
 
 function App() {
@@ -20,9 +22,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/stores" element={<Stores />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
