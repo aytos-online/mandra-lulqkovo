@@ -11,7 +11,7 @@ export default function Stores() {
 
   return (
     <>
-      <PageHeader eyebrow="Магазини" title="Къде ни продават" lead={stores.intro} />
+      <PageHeader eyebrow="Магазини" title="Къде се намираме" lead={stores.intro} />
 
       <section className="section-container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -22,7 +22,7 @@ export default function Stores() {
           ))}
         </div>
 
-        <div className="mt-12 bg-cream-deep/70 border-2 border-maroon/15 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
+        <div className="mt-12 bg-mist-deep border border-line rounded p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
           <p className="text-ink-muted leading-relaxed max-w-xl">{stores.note}</p>
           <div className="flex flex-wrap gap-3 flex-shrink-0">
             <a href={`tel:${siteConfig.business.phone}`} className="btn-primary no-underline">

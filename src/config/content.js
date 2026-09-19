@@ -5,6 +5,12 @@ import whiteCheeseImage from '../assets/products/product_white_cheese.png';
 import cheeseWheelImage from '../assets/products/product_cheese_wheel.png';
 import yogurtJarImage from '../assets/products/product_yogurt_jar.png';
 import milkBottleImage from '../assets/products/product_milk_bottle.png';
+// Public-domain engravings, one per milk. See src/assets/animals/README.md for
+// the source plate and licence of each.
+import kraveAnimal from '../assets/animals/krave.webp';
+import ovcheAnimal from '../assets/animals/ovche.webp';
+import kozeAnimal from '../assets/animals/koze.webp';
+import bivolskoAnimal from '../assets/animals/bivolsko.webp';
 
 export const content = {
   hero: {
@@ -62,7 +68,7 @@ export const content = {
       {
         title: 'Подсирваме',
         body: 'Мляко, сол и мая — нищо друго. Изчакваме подсирката да стегне толкова, колкото трябва.',
-        accent: 'sun',
+        accent: 'mint',
       },
       {
         title: 'Оформяме на ръка',
@@ -72,7 +78,7 @@ export const content = {
       {
         title: 'Оставяме да зрее',
         body: 'Сиренето узрява в саламура, кашкавалът — бавно на рафта. Готово е, когато е готово.',
-        accent: 'coral',
+        accent: 'lagoon',
       },
     ],
   },
@@ -106,24 +112,32 @@ export const content = {
       label: 'Краве',
       blurb: 'Мекота и наситеност — млякото, което помним от детство.',
       accent: 'sky',
+      animal: kraveAnimal,
+      animalAlt: 'Гравюра на крава',
     },
     {
       id: 'ovche',
       label: 'Овче',
       blurb: 'По-плътно и ароматно, с характер на планината.',
       accent: 'meadow',
+      animal: ovcheAnimal,
+      animalAlt: 'Гравюра на овца',
     },
     {
       id: 'koze',
       label: 'Козе',
       blurb: 'Леко и освежаващо, с деликатна киселинност.',
-      accent: 'sun',
+      accent: 'mint',
+      animal: kozeAnimal,
+      animalAlt: 'Гравюра на коза',
     },
     {
       id: 'bivolsko',
       label: 'Биволско',
       blurb: 'Кремообразно и богато — рядко срещано, но си заслужава.',
-      accent: 'coral',
+      accent: 'lagoon',
+      animal: bivolskoAnimal,
+      animalAlt: 'Гравюра на бивол',
     },
   ],
 
@@ -141,7 +155,7 @@ export const content = {
       id: 'krave-kashkaval',
       category: 'krave',
       name: 'Кашкавал',
-      description: 'Краве мляко, сол, мая. Зрее бавно за плътен вкус.',
+      description: 'Краве мляко, сол, мая. Свеж и наситен с млечен вкус.',
       weight: 'прибл. 350 г парче',
       serve: 'Тънко нарязан на дъска или разтопен върху топла филия.',
       image: cheeseWheelImage,
@@ -195,7 +209,7 @@ export const content = {
       id: 'ovche-kashkaval',
       category: 'ovche',
       name: 'Кашкавал',
-      description: 'Овче мляко, сол, мая. Плътен и ароматен.',
+      description: 'Овче мляко, сол, мая. Свеж и наситен с млечен вкус.',
       weight: 'прибл. 350 г парче',
       serve: 'За дъска със сирена или настърган върху топло ястие.',
       image: cheeseWheelImage,
@@ -204,7 +218,7 @@ export const content = {
       id: 'ovche-kiselo-mlyako',
       category: 'ovche',
       name: 'Кисело мляко',
-      description: 'Гъсто овче кисело мляко, традиционна закваска.',
+      description: 'Овче кисело мляко с плътен и ароматен вкус, традиционна закваска.',
       weight: '400 г гювече',
       serve: 'За таратор, за закуска — или с шепа орехи и мед.',
       image: yogurtJarImage,
@@ -222,7 +236,7 @@ export const content = {
       id: 'koze-kashkaval',
       category: 'koze',
       name: 'Кашкавал',
-      description: 'Козе мляко, сол, мая.',
+      description: 'Козе мляко, сол, мая. Свеж и наситен с млечен вкус.',
       weight: 'прибл. 350 г парче',
       serve: 'По-деликатен вкус — хубав е нарязан на тънко.',
       image: cheeseWheelImage,
@@ -240,7 +254,7 @@ export const content = {
       id: 'bivolsko-kashkaval',
       category: 'bivolsko',
       name: 'Кашкавал',
-      description: 'Биволско мляко, сол, мая.',
+      description: 'Биволско мляко, сол, мая. Свеж и наситен с млечен вкус.',
       weight: 'прибл. 350 г парче',
       serve: 'Богат вкус — малко стига за много.',
       image: cheeseWheelImage,
@@ -249,7 +263,7 @@ export const content = {
       id: 'bivolsko-kiselo-mlyako',
       category: 'bivolsko',
       name: 'Кисело мляко',
-      description: 'Кремообразно биволско кисело мляко.',
+      description: 'Биволско кисело мляко с плътен и ароматен вкус.',
       weight: '400 г гювече',
       serve: 'Гъсто дотолкова, че лъжицата да стои — за закуска или десерт.',
       image: yogurtJarImage,
@@ -280,7 +294,7 @@ export const content = {
   },
 
   contact: {
-    intro: 'Пишете ни или се обадете — с удоволствие ще отговорим на въпросите ви.',
+    intro: 'При интерес за по-големи доставки се свържете с нас.',
     faq: [
       {
         q: 'Продавате ли онлайн?',

@@ -7,7 +7,7 @@ export const siteConfig = {
     tagline: "От 1994 г.",
     village: "с. Люляково",
     region: "Стара планина",
-    phone: "+359 00 000 000",
+    phone: "+359 12 345 678",
     email: "adi_milk@abv.bg",
     address,
     mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,

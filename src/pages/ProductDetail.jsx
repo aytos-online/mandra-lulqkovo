@@ -2,15 +2,15 @@ import { Link, useParams } from 'react-router-dom';
 import { content } from '../config/content';
 import ProductCard from '../components/sections/ProductCard';
 import CtaBand from '../components/sections/CtaBand';
-import AnimalMark from '../components/ui/AnimalMark';
-import { FolkBand, FolkWeave } from '../components/ui/FolkPattern';
 
 const TINT = {
-  sky: { wash: 'bg-sky/30', chip: 'bg-sky' },
-  meadow: { wash: 'bg-meadow/30', chip: 'bg-meadow' },
-  sun: { wash: 'bg-sun/30', chip: 'bg-sun' },
-  coral: { wash: 'bg-coral/30', chip: 'bg-coral' },
+  sky: { wash: 'bg-sky/40', chip: 'bg-sky/15 text-sky-dark' },
+  meadow: { wash: 'bg-meadow/40', chip: 'bg-meadow/15 text-meadow-dark' },
+  mint: { wash: 'bg-mint/40', chip: 'bg-mint/15 text-mint-dark' },
+  lagoon: { wash: 'bg-lagoon/40', chip: 'bg-lagoon/15 text-lagoon-dark' },
 };
+
+const FALLBACK = { wash: 'bg-mist-deep', chip: 'bg-mist-deep text-brand' };
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export default function ProductDetail() {
     return (
       <section className="section-container text-center">
         <p className="eyebrow mb-3">Продукти</p>
-        <h1 className="font-serif font-bold text-3xl text-ink mb-6">Не намерихме този продукт</h1>
+        <h1 className="font-serif font-semibold text-3xl text-ink mb-6">Не намерихме този продукт</h1>
         <Link to="/products" className="btn-primary no-underline">
           Обратно към продуктите
         </Link>
@@ -29,7 +29,7 @@ export default function ProductDetail() {
   }
 
   const category = content.productCategories.find((c) => c.id === product.category);
-  const tint = TINT[category?.accent] ?? { wash: 'bg-cream-deep', chip: 'bg-honey' };
+  const tint = TINT[category?.accent] ?? FALLBACK;
   const similar = content.products
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
@@ -39,52 +39,46 @@ export default function ProductDetail() {
       <section className="section-container">
         <Link
           to={`/products?category=${product.category}`}
-          className="inline-flex items-center gap-1 font-bold text-maroon hover:text-maroon-dark text-sm mb-8"
+          className="inline-flex items-center gap-1 font-semibold text-brand hover:text-brand-dark text-sm mb-8"
         >
           ← Всички {category?.label.toLowerCase()} продукти
         </Link>
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-start">
-          <div className="rounded-3xl overflow-hidden border-2 border-ink/10 shadow-[0_18px_40px_-20px_rgba(43,26,18,0.5)]">
-            <div className={`relative aspect-square ${tint.wash}`}>
-              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-                <FolkWeave size={84} color="#9C1F1C" opacity={0.08} />
-              </div>
+          <div className="rounded overflow-hidden border border-line">
+            <div className={`aspect-square ${tint.wash}`}>
               <img
                 src={product.image}
                 alt={product.name}
-                className="relative w-full h-full object-cover mix-blend-multiply"
+                className="w-full h-full object-cover mix-blend-multiply"
               />
             </div>
-            <FolkBand height={14} />
           </div>
 
           <div>
             {category && (
               <span
-                className={`inline-flex items-center gap-2 ${tint.chip} text-espresso pl-2 pr-4 py-1.5 rounded-full text-sm font-bold mb-5`}
+                className={`inline-flex items-center gap-2 ${tint.chip} pl-2 pr-4 py-1.5 rounded text-sm font-semibold mb-5`}
               >
-                <AnimalMark animal={category.id} className="w-6 h-6 text-espresso" />
+                <img src={category.animal} alt="" className="w-8 h-6 object-contain" />
                 {category.label} мляко
               </span>
             )}
 
-            <h1 className="font-serif font-bold text-3xl md:text-4xl text-ink mb-4 leading-tight">
+            <h1 className="font-serif font-semibold text-3xl md:text-4xl text-ink mb-4 leading-tight">
               {product.name}
             </h1>
 
             <p className="text-ink-muted text-lg leading-relaxed mb-6">{product.description}</p>
 
-            <dl className="bg-cream-deep/70 rounded-2xl px-5 py-4 mb-6 inline-block">
-              <dt className="text-[11px] uppercase tracking-[0.16em] font-bold text-maroon">Грамаж</dt>
-              <dd className="font-serif font-bold text-ink mt-1">{product.weight}</dd>
+            <dl className="bg-mist-deep border border-line rounded px-5 py-4 mb-6 inline-block">
+              <dt className="eyebrow">Грамаж</dt>
+              <dd className="font-serif font-semibold text-ink mt-1">{product.weight}</dd>
             </dl>
 
             {product.serve && (
-              <div className="border-l-4 border-honey pl-5 py-1 mb-6">
-                <p className="text-[11px] uppercase tracking-[0.16em] font-bold text-maroon mb-1">
-                  На трапезата
-                </p>
+              <div className="border-l-2 border-azure pl-5 py-1 mb-6">
+                <p className="eyebrow mb-1">На трапезата</p>
                 <p className="text-ink-muted leading-relaxed">{product.serve}</p>
               </div>
             )}
@@ -106,7 +100,7 @@ export default function ProductDetail() {
 
         {similar.length > 0 && (
           <div className="mt-20">
-            <h2 className="font-serif font-bold text-2xl md:text-3xl text-ink mb-8">
+            <h2 className="font-serif font-semibold text-2xl md:text-3xl text-ink mb-8">
               Още {category?.label.toLowerCase()} продукти
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

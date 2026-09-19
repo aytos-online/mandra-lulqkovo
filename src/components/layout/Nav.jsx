@@ -3,7 +3,7 @@ import { siteConfig } from '../../config/site.config';
 
 export default function Nav({ vertical = false, onLinkClick }) {
   return (
-    <nav className={`flex gap-1 ${vertical ? 'flex-col items-stretch' : 'items-center'}`}>
+    <nav className={`flex ${vertical ? 'flex-col items-stretch gap-1' : 'items-center gap-7'}`}>
       {siteConfig.nav.map((link) => (
         <NavLink
           key={link.to}
@@ -11,10 +11,10 @@ export default function Nav({ vertical = false, onLinkClick }) {
           end={link.to === '/'}
           onClick={onLinkClick}
           className={({ isActive }) =>
-            `px-4 py-2 rounded-full text-sm font-bold no-underline transition-colors ${
+            `text-sm no-underline border-b-2 py-1.5 transition-colors ${
               isActive
-                ? 'bg-maroon text-cream hover:text-cream'
-                : 'text-ink hover:bg-maroon/10 hover:text-maroon'
+                ? 'text-ink font-semibold border-brand'
+                : 'text-ink font-medium border-transparent hover:text-brand'
             } ${vertical ? 'text-center' : ''}`
           }
         >

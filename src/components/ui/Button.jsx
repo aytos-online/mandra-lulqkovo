@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 const variants = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
-  cream: 'btn-cream',
-  // For use on the maroon and espresso bands, where an outline reads better
-  // than a second filled button.
+  light: 'btn-light',
+  // For the dark green bands, where an outline reads better than a second fill.
   ghost:
-    'inline-flex items-center justify-center gap-2 border-2 border-cream/50 text-cream px-7 py-3.5 rounded-full font-bold hover:bg-cream/10 hover:border-cream transition-colors duration-150',
+    'inline-flex items-center justify-center gap-2 border border-white/45 text-white px-7 py-3.5 rounded font-semibold hover:bg-white/10 hover:border-white hover:text-white transition-colors duration-200',
 };
 
 export default function Button({ children, variant = 'primary', to, href, className = '', ...props }) {

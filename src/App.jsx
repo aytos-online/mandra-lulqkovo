@@ -15,7 +15,7 @@ import './styles/theme.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col bg-cream">
+      <div className="min-h-screen flex flex-col bg-mist">
         <ScrollToTop />
         <Header />
         <main className="flex-grow">

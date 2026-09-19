@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { content } from '../../config/content';
 import AnimalCategories from './AnimalCategories';
 import ProductCard from './ProductCard';
-import { FolkStar } from '../ui/FolkPattern';
 
 export default function ProductCatalog({ limit, showViewAllLink = false, activeCategory: controlledCategory, onCategoryChange }) {
   const [internalCategory, setInternalCategory] = useState(null);
@@ -36,9 +35,8 @@ export default function ProductCatalog({ limit, showViewAllLink = false, activeC
       )}
 
       {showViewAllLink && (
-        <div className="mt-10 flex items-center gap-3">
-          <FolkStar className="w-4 h-4" />
-          <Link to="/products" className="font-bold text-maroon hover:text-maroon-dark">
+        <div className="mt-10">
+          <Link to="/products" className="font-semibold text-brand hover:text-brand-dark">
             Разгледайте всички продукти →
           </Link>
         </div>

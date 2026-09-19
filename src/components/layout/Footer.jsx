@@ -1,36 +1,33 @@
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../../config/site.config';
 import { content } from '../../config/content';
-import { FolkBand, FolkStar } from '../ui/FolkPattern';
+import logo from '../../assets/images/mandra/adi-milk-logo.webp';
 
 export default function Footer() {
   return (
-    <footer className="bg-espresso text-cream">
-      <FolkBand height={18} threads={{ a: '#C22E2A', b: '#EFA92B', c: '#FDF3E0' }} />
-
+    <footer className="bg-brand-deep text-white/80">
       <div className="section-container !py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <FolkStar
-                className="w-8 h-8 flex-shrink-0"
-                threads={{ a: '#C22E2A', b: '#C22E2A', c: '#EFA92B' }}
-              />
-              <h3 className="font-serif font-bold text-lg">{siteConfig.business.name}</h3>
+            <div className="flex flex-col items-start gap-3 mb-4">
+              <span className="inline-flex bg-paper rounded px-3 py-2">
+                <img src={logo} alt={siteConfig.business.legalName} className="h-8 w-auto" />
+              </span>
+              <h3 className="font-serif font-semibold text-lg text-white">{siteConfig.business.name}</h3>
             </div>
-            <p className="text-cream/70 text-sm leading-relaxed">
+            <p className="text-white/60 text-sm leading-relaxed">
               Семейна мандра {siteConfig.business.tagline.toLowerCase()} {content.footer.note}
             </p>
           </div>
 
           <div>
-            <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-honey mb-4">Страници</h4>
+            <h4 className="label text-mint mb-4">Страници</h4>
             <ul className="flex flex-col gap-2">
               {siteConfig.nav.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-cream/80 hover:text-honey text-sm no-underline transition-colors"
+                    className="text-white/75 hover:text-white text-sm no-underline transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -40,13 +37,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-honey mb-4">По вид мляко</h4>
+            <h4 className="label text-mint mb-4">По вид мляко</h4>
             <ul className="flex flex-col gap-2">
               {content.productCategories.map((cat) => (
                 <li key={cat.id}>
                   <Link
                     to={`/products?category=${cat.id}`}
-                    className="text-cream/80 hover:text-honey text-sm no-underline transition-colors"
+                    className="text-white/75 hover:text-white text-sm no-underline transition-colors"
                   >
                     {cat.label} мляко
                   </Link>
@@ -56,14 +53,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-honey mb-4">Контакти</h4>
+            <h4 className="label text-mint mb-4">Контакти</h4>
             <ul className="flex flex-col gap-2 text-sm">
               <li>
                 <a
                   href={siteConfig.business.mapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-cream/80 hover:text-honey no-underline transition-colors"
+                  className="text-white/75 hover:text-white no-underline transition-colors"
                 >
                   {siteConfig.business.address}
                 </a>
@@ -71,7 +68,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.business.phone}`}
-                  className="text-cream/80 hover:text-honey no-underline transition-colors"
+                  className="text-white/75 hover:text-white no-underline transition-colors"
                 >
                   {siteConfig.business.phone}
                 </a>
@@ -79,7 +76,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.business.email}`}
-                  className="text-cream/80 hover:text-honey no-underline transition-colors"
+                  className="text-white/75 hover:text-white no-underline transition-colors"
                 >
                   {siteConfig.business.email}
                 </a>
@@ -88,7 +85,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 pt-8 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-cream/50 text-sm">
+        <div className="border-t border-white/15 pt-8 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-white/50 text-xs">
           <p>
             &copy; 1994–{new Date().getFullYear()} {siteConfig.business.name}
           </p>

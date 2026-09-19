@@ -13,25 +13,56 @@ npm run preview  # preview production build
 npm run lint     # oxlint
 ```
 
+## Docker
+
+For development with automatic updates, start Vite in a container:
+
+```bash
+docker compose up --build
+```
+
+Open <http://localhost:5173>. The source directory is mounted into the container,
+so changes—including edits to `src/config/site.config.js`—are applied immediately
+through Vite's hot reload. Stop it with `docker compose down`.
+
+Build the production image:
+
+```bash
+docker build -t mandra-lulqkovo .
+```
+
+Run the container and expose the site at <http://localhost:8080>:
+
+```bash
+docker run --rm -p 8080:80 mandra-lulqkovo
+```
+
 ## Brand system
 
-The visual language is Bulgarian folk embroidery — **шевица** — rendered in code rather than as image assets, so it
-scales cleanly and can be recoloured per section.
+Cool greens and blues on white — the design language follows flat, hairline-ruled
+editorial surfaces rather than anything textured or ornamental.
 
-- `src/components/ui/FolkPattern.jsx` — the motifs, defined as stitch grids (one character per stitch):
-  - `FolkBand` — repeating diamond-chain border. Section dividers, card header rules, the hem under the site header.
-  - `FolkStar` — the eight-pointed star. Logo mark, list bullets, seals.
-  - `FolkWeave` — the same star tiled large and faint as a woven-cloth ground behind a section.
-  - Each takes a `threads={{ a, b, c }}` prop so the three thread colours can be retuned per placement.
-- `src/components/ui/AnimalMark.jsx` — flat head silhouettes for the four milks (cow, sheep, goat, buffalo), drawn
-  with an SVG mask so eyes and nostrils punch through to whatever colour sits behind.
-- Palette lives in `tailwind.config.js`: madder red (`maroon`) as the primary, with `honey` / `sky` / `meadow` /
-  `sun` / `coral` as the bright folk accents. Each milk owns one accent colour and keeps it everywhere it appears —
-  category tile, filter chip, product card wash, product page.
-- Component classes (`.btn-primary`, `.eyebrow`, `.photo-frame`, `.texture-linen`) are in `src/styles/theme.css`.
+- **Tokens** live in `tailwind.config.js`: `brand` green `#2E8F6E` as the primary,
+  `azure` as the secondary, `mist`/`mist-deep`/`paper` grounds, `line` hairlines,
+  and one light shade per milk — `sky` (краве), `meadow` (овче), `mint` (козе),
+  `lagoon` (биволско). Each milk keeps its colour everywhere it appears: category
+  tile, filter chip, product card wash, product page.
+- **Component classes** are in `src/styles/theme.css`: `.btn-primary` /
+  `.btn-secondary` / `.btn-light`, `.label` and `.eyebrow`, `.rule`, `.card` and
+  `.card-lift`, `.section-container`, `.section-tint`, `.photo-frame`.
+- **Type** is Literata 600 for headings and Manrope for everything else, with two
+  custom steps below `text-sm`: `text-label` (11.5px, 0.16em) and `text-micro` (10px).
+- **Animal engravings** — `src/assets/animals/` holds one public-domain 19th-century
+  plate per milk, cut out and re-inked in the site's `ink` colour. See that folder's
+  README for sources and licences.
 
-Product illustrations are pale flat art on a cream ground; they are composited over the milk's accent colour with
-`mix-blend-multiply`, which drops the flat ground into the tint and makes the catalogue read as one set.
+Product illustrations are pale flat art on a cream ground; they are composited over
+the milk's accent colour with `mix-blend-multiply`, which drops the flat ground into
+the tint and makes the catalogue read as one set.
+
+Full reference, including every hex value and a consistency audit:
+`~/Documents/obsidian-vault/mandra-lulqkovo/design-system.md`, with a visual version
+as `design-system.html` beside it.
 
 ## Structure
 
@@ -41,7 +72,7 @@ Product illustrations are pale flat art on a cream ground; they are composited o
 - `src/components/layout/` — Header, Nav, MobileMenu, PageHeader, Footer
 - `src/components/sections/` — page sections (Hero, AnimalCategories, FarmBanner, Process, Differentiators,
   ProductCatalog, CtaBand, …)
-- `src/components/ui/` — Button, Reveal, DripDivider and the brand primitives above
+- `src/components/ui/` — Button, Reveal, DripDivider, DropMark
 
 Every page closes with the shared `CtaBand` (visit us / call us), so there is always a next step — the site sells
 nothing online.
@@ -54,8 +85,9 @@ nothing online.
   The `serve` lines are suggested copy, safe to rewrite.
 - **Photography** — the only real photos are `src/assets/images/mandra/` (production) and `src/assets/hero-page.jpg`
   (Стара планина). Product art is illustration; swap in real product photos when they exist.
-- **Logo** — currently the шевица star mark; replace `public/favicon.svg` and the mark in `Header.jsx` if a logo is
-  designed.
+- **Logo** — the client's "Ади милк" wordmark is in place (header, footer, mobile drawer, favicons). The supplied
+  file `src/assets/images/mandra/adi-milk-logo.jpg` is actually a PNG despite its extension; ask for an SVG if one
+  exists, since the favicons are currently built from a raster crop.
 
 ## Deployment
 

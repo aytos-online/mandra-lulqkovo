@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { FolkStar } from '../components/ui/FolkPattern';
+import DropMark from '../components/ui/DropMark';
 
 export default function NotFound() {
   return (
     <section className="section-container text-center">
-      <FolkStar className="w-12 h-12 mx-auto mb-6" />
+      <DropMark className="w-10 h-10 mx-auto mb-6 text-brand" />
       <p className="eyebrow mb-3">404</p>
-      <h1 className="font-serif font-bold text-3xl md:text-4xl text-ink mb-4">
+      <h1 className="font-serif font-semibold text-3xl md:text-4xl text-ink mb-4">
         Тази страница я няма
       </h1>
       <p className="text-ink-muted max-w-md mx-auto mb-8">
